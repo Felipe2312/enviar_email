@@ -1,0 +1,8 @@
+# Ignorar todos os arquivos .xlsx
+*.xlsx
+
+# Ignorar a pasta venv
+venv/
+
+
+__pycache__
