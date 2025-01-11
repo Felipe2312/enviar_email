@@ -61,12 +61,12 @@ def disparar_emails(email_origem, senha_email, servidor, porta, topico, conteudo
     return placeholder.empty(), progress_container.empty()
 
                  
-email_origem = st.text_input(label='E-mail de origem ')
-senha_email = st.text_input(label='Senha e-mail', type="password")
+email_origem = st.text_input(label='E-mail de origem ').strip()
+senha_email = st.text_input(label='Senha e-mail', type="password").strip()
 
 col1, col2, col3 = st.columns([2, 1, 1])
 with col1:
-    servidor = st.text_input(label='servidor',value='smtp.gmail.com')
+    servidor = st.text_input(label='servidor',value='smtp.gmail.com').strip()
 with col2:
     porta = st.number_input(label='porta', min_value=0, value=465, step=1, format="%d")
 with col3:
