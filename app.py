@@ -62,17 +62,17 @@ def disparar_emails(email_origem, senha_email, servidor, porta, topico, conteudo
 
                  
 email_origem = st.text_input(label='E-mail de origem ')
-senha_email = st.text_input(label='Senha e-mail')
+senha_email = st.text_input(label='Senha e-mail', type="password")
 
 col1, col2, col3 = st.columns([2, 1, 1])
 with col1:
     servidor = st.text_input(label='servidor',value='smtp.gmail.com')
 with col2:
-    porta = st.text_input(label='porta', value='465')
+    porta = st.number_input(label='porta', min_value=0, value=465, step=1, format="%d")
 with col3:
-    intervalo_em_segundos = int(st.text_input(label='Intervalo de envio', value='60'))
+    intervalo_em_segundos = st.number_input(label='intervalo entre envios', min_value=5, max_value=300, value=45, step=1, format="%d")
 
-topico = st.text_area(label='Topico')
+topico = st.text_input(label='Topico')
 mensagem = st.text_area(label='Mensagem')
 
 
