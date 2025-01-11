@@ -34,7 +34,6 @@ def disparar_emails(email_origem, senha_email, servidor, porta, topico, conteudo
             mail.add_header('Content-Type', 'text/html')
             mail.set_payload(conteudo_email.encode('utf-8'))
             
-            sleep(intervalo_em_segundos)
             try:
                 with smtplib.SMTP_SSL(servidor, porta) as smtp:
                     smtp.login(user=email_origem, password=senha_email)
@@ -46,9 +45,9 @@ def disparar_emails(email_origem, senha_email, servidor, porta, topico, conteudo
                 enviados = len(df.query('enviado == "enviado" or enviado == "erro"')) 
                 progresso = (enviados / total_items) if total_items > 0 else 0
                 progress_container.progress(progresso, text=f'{progresso*100:.0f}%')
-
                 placeholder.success(f"E-mail enviado para {email_destino}")
 
+                sleep(intervalo_em_segundos)
             except Exception as e:
                 df.at[index, 'enviado'] = 'erro'
             
